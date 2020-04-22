@@ -27,7 +27,7 @@ class PublicTagsApiTests(TestCase):
 
 
 class PrivateTagsApiTests(TestCase):
-    """Test the authorized user tags API"""
+    """Test the private tags API"""
 
     def setUp(self):
         self.user = get_user_model().objects.create_user(
@@ -37,7 +37,7 @@ class PrivateTagsApiTests(TestCase):
         self.client = APIClient()
         self.client.force_authenticate(self.user)
 
-    def test_retrieve_tags(self):
+    def test_retrieve_tags_list(self):
         """Test retrieving tags"""
         Tag.objects.create(user=self.user, name='Vegan')
         Tag.objects.create(user=self.user, name='Dessert')
