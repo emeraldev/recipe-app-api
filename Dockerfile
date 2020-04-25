@@ -3,8 +3,8 @@ LABEL maintainer="Spielage Software <dev@spiegale.com>"
 
 ENV PYTHONUNBUFFERED 1
 
-RUN apt-get update && apt-get install ca-certificates && rm -rf /var/cache/apk/*
-COPY ./host.crt /usr/local/share/ca-certificates
+RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
+COPY ./mycert.crt /usr/local/share/ca-certificates/mycert.crt
 RUN update-ca-certificates
 
 COPY ./requirments.txt /requirments.txt
