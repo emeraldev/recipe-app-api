@@ -3,10 +3,6 @@ LABEL maintainer="Spielage Software <dev@spiegale.com>"
 
 ENV PYTHONUNBUFFERED 1
 
-RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
-COPY ./mycert.crt /usr/local/share/ca-certificates/mycert.crt
-RUN update-ca-certificates
-
 COPY ./requirments.txt /requirments.txt
 RUN apk add --update --no-cache postgresql-client
 RUN apk add --update --no-cache --virtual .tmp-build-deps \
